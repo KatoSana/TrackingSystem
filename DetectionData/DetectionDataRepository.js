@@ -57,4 +57,22 @@ module.exports = class DetectionDataRepository {
     }
     return detectionDatas;
   }
+
+  static async getDetectionDataTermOnly(searchTimes) {
+    const client = await MongoClient.connect(DBURL).catch(err => {
+      console.log(err);
+    });
+    const db = client.db(DBName);
+    const searchQuery = { detectedTime: { $lte: searchTimes["end"], $gte: searchTimes["start"] } };
+    const detectionDataQuery = await db
+      .collection("detectionData")
+      .find(searchQuery)
+      .toArray();
+    client.close();
+    let detectionDatas = [];
+    for (let detectionData of detectionDataQuery) {
+      detectionDatas.push(detectionData);
+    }
+    return detectionDatas;
+  }
 };

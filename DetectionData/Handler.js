@@ -9,4 +9,18 @@ module.exports = class Handler {
       res.send("DetectionData Add Success!");
     });
   }
+
+  static getDetectionDataTermOnly(req, res) {
+    let searchTime = {};
+    if (req.query.start && req.query.end) {
+      searchTime = {
+        start: Number(req.query.start),
+        end: Number(req.query.end)
+      };
+    }
+    DetectionDataRepository.getDetectionDataTermOnly(searchTime)
+      .then(detectionData =>{
+        res.send(detectionData);
+      });
+  }
 };

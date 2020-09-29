@@ -7,6 +7,7 @@ import Meta from './Meta/Meta';
 import Room from './Room/Room';
 import Tracker from './Tracker/Tracker';
 import Schedule from './Schedule/Schedule';
+import DetectionData from './DetectionData/DetectionData';
 
 export default function Setting() {
   return (
@@ -18,6 +19,7 @@ export default function Setting() {
           <Tab>部屋</Tab>
           <Tab>ユニット</Tab>
           <Tab>受信機</Tab>
+          <Tab>受信機データ調査</Tab>
         </TabList>
 
         <TabPanel>
@@ -34,6 +36,9 @@ export default function Setting() {
         </TabPanel>
         <TabPanel>
           <Detector />
+        </TabPanel>
+        <TabPanel>
+          <DetectionData />
         </TabPanel>
       </Tabs>
     </div>

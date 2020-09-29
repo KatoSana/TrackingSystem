@@ -8,4 +8,8 @@ router.post('/', (request, response) => {
   Handler.addDetectionData(request, response)
 });
 
+router.get('/', (request, response) => {
+  Handler.getDetectionDataTermOnly(request, response)
+});
+
 module.exports = router;
